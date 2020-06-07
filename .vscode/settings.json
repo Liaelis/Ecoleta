@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+  
+            "*.html": "njk"
+        }, 
+        "emmet.includeLanguages": {
+              "njk": "html"
+        } 
+    
+}
