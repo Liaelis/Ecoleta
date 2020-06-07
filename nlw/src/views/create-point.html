@@ -6,6 +6,7 @@
     
     {% block styles %}
      <link rel="stylesheet" href="styles/create-point.css">
+     <link rel="stylesheet" href="styles/modal.css">
     {% endblock styles %}
     
    
@@ -15,7 +16,7 @@
     {% block content %}
         {%include "partials/page-header.html"%}   
    
-            <form>
+            <form method="POST" action="/savepoint">
                 <h1>Cadastro do ponto de coleta</h1>
                 <fieldset>
                     <legend>
@@ -66,27 +67,27 @@
                         <span>Selecione um ou mais itens abaixo</span>
                     </legend>
                     <div class="items-grid">
-                        <li data-id="1">
+                        <li data-id="Lâmpadas">
                             <img src="./assets/lampadas.svg" alt="Lampadas">
                             <span>Lâmpadas</span>
                         </li>
-                        <li data-id="2">
+                        <li data-id="Pilhas e Baterias">
                             <img src="./assets/baterias.svg" alt="Baterias">
                             <span>Pilhas e Baterias</span>
                         </li>
-                        <li data-id="3">
+                        <li data-id="Papéis e Baterias">
                             <img src="./assets/papeis-papelao.svg" alt="Papeis">
                             <span>Papeis e Papelão</span>
                         </li>
-                        <li data-id="4">
+                        <li data-id="Residuos Eletronicos">
                             <img src="./assets/eletronicos.svg" alt="Residuos Eletronicos">
                             <span>Residuos Eletronicos</span>
                         </li>
-                        <li data-id="5">
+                        <li data-id="Residuos Orgânicos">
                             <img src="./assets/organicos.svg" alt="Residuos Orgânicos">
                             <span>Residuos Orgânicos</span>
                         </li>
-                        <li data-id="6">
+                        <li data-id="Óleo de Cozinha">
                             <img src="./assets/oleo.svg" alt="Óleo de Cozinha">
                             <span>Óleo de Cozinha</span>
                         </li>
@@ -97,7 +98,14 @@
                 </fieldset>
                 <button type="submit">Cadastrar ponto de colera</button>
             </form>
+           
+           
       {% endblock content %}
+      {% block modal %}
+       {% if saved %}
+             {%include "partials/point-created.html"%}}
+            {% endif %}
+      {% endblock modal %}
       {% block script %}
          <script src="/scripts/create-point.js"></script>
     {% endblock script %}

@@ -15,30 +15,33 @@
 
         {%include "partials/page-header.html"%}
            <main>
-                <h4>
-                    <strong>2 pontos</strong> encontrados
+           {% if total >0 %}
+           <h4>
+                    <strong>{{total}}</strong> encontrados
                 </h4>
                 <div class="cards">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1545852528-fa22f7fcd63e?ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" alt="Colectoria">
-                        <h1>Colectoria</h1>
-                        <h3>Residuos Eletronicos, Lâmpadas</h3>
+
+                {% for place in places %}
+                <div class="card">
+                        <img src="{{place.image}}" alt="{{place.name}}">
+                        <h1>{{place.name}}</h1>
+                        <h3>{{place.items}}</h3>
                         <p>
-                            Rio do Sul, Santa CAtarina <br/>
-                            Guilherme Gemballa, Jardin América<br/>
-                            N° 260
+                            {{place.city}}, {{place.state}} <br/>
+                            {{place.address}}<br/>
+                            {{place.address2}}
                         </p>
                     </div>
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1545879456-d3f920f7c42a?ixlib=rb-1.2.1&auto=format&fit=crop&w=333&q=80" alt="Paper Side">
-                        <h1>Papersides</h1>
-                        <h3>Papeis e papelão</h3>
-                        <p>
-                            Rio do Sul, Santa CAtarina <br/>
-                            Guilherme Gemballa, Jardin América<br/>
-                            N° 260
-                        </p>
-                    </div>
+
+                {% endfor %}
+                        
                 </div>
+
+            {%else%}
+            <h4><strong>Nenhum</strong> Local Encontrado</h>
+
+           {% endif %}
+                
+
            </main>
     {% endblock content %}
